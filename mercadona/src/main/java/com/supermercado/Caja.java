@@ -3,7 +3,7 @@ package com.supermercado;
 public class Caja {
     int tmax=0;
     int tmin=0;
-    int nclientes=0;
+    int nclientes=10;
     boolean ocupada=false;
 
     public synchronized void entrar(){
