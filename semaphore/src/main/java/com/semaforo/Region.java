@@ -3,22 +3,24 @@ package com.semaforo;
 import java.util.concurrent.Semaphore;
 
 public class Region {
-    private final Semaphore puedeProducir;
-    private final Semaphore puedeVender;
+    private final Semaphore Producir;
+    private final Semaphore Vender;
+
+
 
     public Region() {
-        puedeProducir = new Semaphore(1);
+        Producir = new Semaphore(1);
 
-        puedeVender = new Semaphore(0);
+        Vender = new Semaphore(0);
     }
 
     public void produce() throws InterruptedException {
-        puedeProducir.acquire();
-        puedeVender.release();
+        Producir.acquire();
+        Vender.release();
     }
 
     public void vende() throws InterruptedException {
-        puedeVender.acquire();
-        puedeProducir.release();
+        Vender.acquire();
+        Producir.release();
     }
 }
