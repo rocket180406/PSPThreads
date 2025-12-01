@@ -1,9 +1,17 @@
 package com.kratos;
-/*Crea un programa con 2 hilos, uno de los hilos mandará el literal "Hola!" al otro hilo que a su vez le enviará "Adios".
 
-NOTA: Recuerda que la ejecución se para hasta que todas las partes envían su contenido. */
+import java.util.concurrent.Exchanger;
+
 public class Main {
+
     public static void main(String[] args) {
-        
+
+        Exchanger<String> exchanger = new Exchanger<>();
+
+        Thread hilo1 = new Thread(new Mensaje(exchanger, "Hola"));
+        Thread hilo2 = new Thread(new Mensaje(exchanger, "Adios"));
+
+        hilo1.start();
+        hilo2.start();
     }
 }
